@@ -15,7 +15,10 @@ class CreateHeadquartersTable extends Migration
     {
         Schema::create('headquarters', function (Blueprint $table) {
             $table->bigIncrements('headquarters_id');
-            $table->bigInteger('branch_id')->references('branch_id')->on('branches');
+            $table->unsignedBigInteger('branch_id');
+        });
+        Schema::table('headquarters', function (Blueprint $table) {
+            $table->foreign('branch_id')->references('branch_id')->on('branches');
         });
     }
 

@@ -16,7 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('order_id');
             $table->timestamp('order_date');
-            $table->bigInteger('headquarters_id')->references('headquarters_id')->on('headquarters')->unique();
+            $table->unsignedBigInteger('headquarters_id')->unique();
+        });
+
+        Schema::table('orders', function (Blueprint $table) {
+            $table->foreign('headquarters_id')->references('headquarters_id')->on('headquarters')->unique();
         });
     }
 

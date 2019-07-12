@@ -15,7 +15,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('product_id');
-            $table->bigInteger('supplier_id')->references('supplier_id')->on('suppliers');
+            $table->unsignedBigInteger('supplier_id');
+        });
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('supplier_id')->references('supplier_id')->on('suppliers');
         });
     }
 

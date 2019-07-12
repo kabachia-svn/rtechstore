@@ -16,7 +16,11 @@ class CreateDeliveriesTable extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->bigIncrements('delivery_id');
             $table->timestamp('delivery_date');
-            $table->bigInteger('supplier_id')->references('supplier_id')->on('suppliers');
+            $table->unsignedBigInteger('supplier_id');
+        });
+
+        Schema::table('deliveries', function (Blueprint $table) {
+            $table->foreign('supplier_id')->references('supplier_id')->on('suppliers');
         });
     }
 

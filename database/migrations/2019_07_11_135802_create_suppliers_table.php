@@ -14,10 +14,8 @@ class CreateSuppliersTable extends Migration
     public function up()
     {
         Schema::create('suppliers', function (Blueprint $table) {
-            $table->bigInteger('delivery_id')->references('delivery_id')->on('deliveries');
-            $table->timestamp('delivery_date');
             $table->bigIncrements('supplier_id');
-        });
+        }); 
     }
 
     /**

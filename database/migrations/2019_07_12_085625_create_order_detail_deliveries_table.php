@@ -14,10 +14,17 @@ class CreateOrderDetailDeliveriesTable extends Migration
     public function up()
     {
         Schema::create('order_detail_deliveries', function (Blueprint $table) {
-            $table->bigInteger('delivery_id')->references('delivery_id')->on('deliveries');
-            $table->bigInteger('order_id')->references('order_id')->on('orders');
-            $table->bigInteger('order_detail_id')->references('order_detail_id')->on('order_details');
+            $table->unsignedBigInteger('delivery_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('order_detail_id');
         });
+
+        Schema::table('order_detail_deliveries', function (Blueprint $table) {
+            $table->foreign('delivery_id')->references('delivery_id')->on('deliveries');
+            $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->foreign('order_detail_id')->references('order_detail_id')->on('order_details');
+        });
+
     }
 
     /**
