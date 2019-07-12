@@ -14,12 +14,13 @@
                     </ul>
                 </div><br />
              @endif
-             <form method="post" action="{{  branches.store}}">
+             <form method="post" action="{{ route('branches.store')}}">
                  @csrf
                  <div class="form-group">
                      <label for="branch_id">Branch ID: </label>
                      <input type="text" class="form-control" name="branch_id"/>
                  </div>
+                 <button type='submit' class='btn btn-primary-outline'>Add branch</button>
              </form>
         </div>
     </div> 

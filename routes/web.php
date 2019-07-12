@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resouce('contacts','ContactController');
+Route::resource('branches','BranchController');
