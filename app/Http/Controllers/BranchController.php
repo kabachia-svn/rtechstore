@@ -14,7 +14,8 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        $branches = Branch::all();
+        return view('branches.index',compact('branches'));
     }
 
     /**
@@ -66,7 +67,8 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $branch = Branch::find($id);
+        return view('branches.edit', compact('branch'));
     }
 
     /**
@@ -78,7 +80,16 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'branch_id'->'required',
+        ]);
+        
+
+        $branch = Branch::find($id);
+        $branch->branch_id = $request->get('branch_id');
+        $branch->save();
+
+        return redirect('/branches')->with('success','Branch updated!');
     }
 
     /**
@@ -89,6 +100,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $branch = Branch::find($id);
+        $branch->delete();
+
+        return redirect('/branches')->with('success','Branch deleted!');
     }
 }
