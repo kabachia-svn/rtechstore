@@ -26,8 +26,7 @@ class HeadquartersController extends Controller
      */
     public function create()
     {
-        $branches = Branch::all();
-        return view('headquarters.create', compact('branches'));
+        return view('headquarters.create');
     }
 
     /**
@@ -40,12 +39,12 @@ class HeadquartersController extends Controller
     {
         $request->validate([
             'headquarters_id'=>'required',
-            'branch_id'=>'required',
+            'name'=>'required',
         ]);
 
         $headquarters = new Headquarters([
             'headquarters_id'=>$request->get('headquarters_id'),
-            'branch_id'=>$request->get('branch_id'),
+            'name'=>$request->get('name'),
         ]);
 
         $headquarters->save();
@@ -72,9 +71,7 @@ class HeadquartersController extends Controller
     public function edit($id)
     {
         $headquarters = Headquarters::where('headquarters_id',$id)->first();
-        $branches = Branch::all();
-
-        return view('headquarters.edit', compact('headquarters','branches'));
+        return view('headquarters.edit', compact('headquarters'));
     }
 
     /**
@@ -88,13 +85,13 @@ class HeadquartersController extends Controller
     {
         $request->validate([
             'headquarters_id'=>'required',
-            'branch_id'=>'required',
+            'name'=>'required',
         ]);
 
 
         $headquarters = Headquarters::where('headquarters_id',$id)->first();
         $headquarters->headquarters_id = $request->get('headquarters_id');
-        $headquarters->branch_id = $request->get('branch_id');
+        $headquarters->name = $request->get('name');
         $headquarters->save();
 
         return redirect('/headquarters')->with('success','Headquarter updated!');

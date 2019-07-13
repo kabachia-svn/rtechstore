@@ -11,7 +11,7 @@ class Headquarters extends Model
     
     protected $fillable=[
         'headquarters_id',
-        'branch_id',
+        'name',
     ];
 
     public function branches(){

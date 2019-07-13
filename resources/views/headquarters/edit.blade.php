@@ -20,12 +20,8 @@
                 <input type="text" class="form-control" name="headquarters_id" value={{ $headquarters->headquarters_id}} />
             </div>
             <div class="form-group">
-                <label for="branch_id">Branch Id:</label>
-                <select class="form-control" name="branch_id">
-                    @foreach($branches as $branch)
-                        <option value="{{ $branch->branch_id}}">{{ $branch->branch_id}}</option>
-                    @endforeach
-                </select> 
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" value={{ $headquarters->name}} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
