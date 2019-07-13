@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{ route('branches.update', $branch->id)}}">
+        <form method="post" action="{{ route('branches.update', $branch->branch_id)}}">
             @method('PATCH')
             @csrf
             <div class="form-group">

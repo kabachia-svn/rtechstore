@@ -67,7 +67,7 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        $branch = Branch::find($id);
+        $branch = Branch::where('branch_id',$id)->first();
         return view('branches.edit', compact('branch'));
     }
 
@@ -81,11 +81,11 @@ class BranchController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'branch_id'->'required',
+            'branch_id'=>'required',
         ]);
         
 
-        $branch = Branch::find($id);
+        $branch = Branch::where('branch_id',$id)->first();
         $branch->branch_id = $request->get('branch_id');
         $branch->save();
 
@@ -100,7 +100,7 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        $branch = Branch::find($id);
+        $branch = Branch::where('branch_id',$id)->first();
         $branch->delete();
 
         return redirect('/branches')->with('success','Branch deleted!');

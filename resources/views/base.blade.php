@@ -6,6 +6,13 @@
     <link href="{{ asset('css/app.css')}}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ route('branches.index') }}">Branches</a></li>
+            <li><a href="{{ route('branches.index') }}">Headquarters</a></li>
+            <li><a href="{{ route('branches.index') }}">Orders</a></li>
+        </ul>
+    </div>
     <div class="container">
         @yield('main')
     </div>

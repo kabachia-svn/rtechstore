@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="col-sm-12">
-        @if(session->get('success'))
+        @if(session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
             </div>
@@ -24,13 +24,13 @@
                 <tbody>
                     @foreach($branches as $branch)
                     <tr>
-                        <td>{{$branch->branch_id}}</td>
+                        <td>{{ $branch->branch_id }}</td>
                         <td>
                             <a href="{{ route('branches.edit',$branch->branch_id)}}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
                             <form action="{{ route('branches.destroy', $branch->branch_id)}}" method="post">
-                                @csfr
+                                @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
