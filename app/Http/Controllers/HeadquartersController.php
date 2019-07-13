@@ -1,0 +1,116 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Headquarters;
+use App\Branch;
+
+class HeadquartersController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $headquarters = Headquarters::all();
+        return view('headquarters.index',compact('headquarters'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $branches = Branch::all();
+        return view('headquarters.create', compact('branches'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'headquarters_id'=>'required',
+            'branch_id'=>'required',
+        ]);
+
+        $headquarters = new Headquarters([
+            'headquarters_id'=>$request->get('headquarters_id'),
+            'branch_id'=>$request->get('branch_id'),
+        ]);
+
+        $headquarters->save();
+        return redirect('/headquarters')->with('success', 'Headquarter saved!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $headquarters = Headquarters::where('headquarters_id',$id)->first();
+        $branches = Branch::all();
+
+        return view('headquarters.edit', compact('headquarters','branches'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'headquarters_id'=>'required',
+            'branch_id'=>'required',
+        ]);
+
+
+        $headquarters = Headquarters::where('headquarters_id',$id)->first();
+        $headquarters->headquarters_id = $request->get('headquarters_id');
+        $headquarters->branch_id = $request->get('branch_id');
+        $headquarters->save();
+
+        return redirect('/headquarters')->with('success','Headquarter updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $headquarters = Headquarters::where('headquarters_id',$id)->first();
+        $headquarters->delete();
+
+        return redirect('/headquarters')->with('success','Headquarter deleted!');
+    }
+}

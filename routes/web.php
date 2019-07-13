@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('branches','BranchController');
+Route::resource('headquarters','HeadquartersController');
