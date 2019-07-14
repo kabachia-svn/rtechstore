@@ -20,6 +20,18 @@
                      <label for="branch_id">Branch ID: </label>
                      <input type="text" class="form-control" name="branch_id"/>
                  </div>
+                 <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name" />
+                 </div>
+                 <div class="form-group">
+                     <label for="name">Headquarters:</label>
+                     <select class="form-control" name="headquarters_id">
+                        @foreach($headquarters as $headquarter)
+                            <option value="{{ $headquarter->headquarters_id}}">{{ $headquarter->name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
                  <button type='submit' class='btn btn-primary-outline'>Add branch</button>
              </form>
         </div>

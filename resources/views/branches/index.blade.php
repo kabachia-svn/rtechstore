@@ -17,7 +17,9 @@
             <table class="table table-stripped">
                 <thead>
                    <tr>
-                     <td>Branch Id</td>
+                     <td>Branch ID</td>
+                     <td>Name</td>
+                     <td>Headquarters ID</td>
                      <td colspan= 2>Actions</td>
                    </tr>
                 </thead>
@@ -25,6 +27,8 @@
                     @foreach($branches as $branch)
                     <tr>
                         <td>{{ $branch->branch_id }}</td>
+                        <td>{{ $branch->name }}</td>
+                        <td>{{ $branch->headquarters_id }}</td>
                         <td>
                             <a href="{{ route('branches.edit',$branch->branch_id)}}" class="btn btn-primary">Edit</a>
                         </td>

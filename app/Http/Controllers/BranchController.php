@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Branch;
+use App\Headquarters;
 
 class BranchController extends Controller
 {
@@ -25,7 +26,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('branches.create');
+        $headquarters = Headquarters::all();
+        return view('branches.create',compact('headquarters'));
     }
 
     /**
@@ -38,11 +40,16 @@ class BranchController extends Controller
     {
         $request->validate([
             'branch_id'=>'required',
+            'name'=>'required',
+            'headquarters_id'=>'required',
         ]);
 
         $branch = new Branch([
             'branch_id'=>$request->get('branch_id'),
+            'name'=>$request->get('name'),
+            'headquarters_id'=>$request->get('headquarters_id'),
         ]);
+        
    
         $branch->save();
         return redirect('/branches')->with('success', 'Branch saved!');
@@ -68,7 +75,8 @@ class BranchController extends Controller
     public function edit($id)
     {
         $branch = Branch::where('branch_id',$id)->first();
-        return view('branches.edit', compact('branch'));
+        $headquarters = Headquarters::all();
+        return view('branches.edit', compact('branch','headquarters'));
     }
 
     /**
@@ -82,11 +90,15 @@ class BranchController extends Controller
     {
         $request->validate([
             'branch_id'=>'required',
+            'name'=>'required',
+            'headquarters_id'=>'required',
         ]);
         
 
         $branch = Branch::where('branch_id',$id)->first();
         $branch->branch_id = $request->get('branch_id');
+        $branch->name = $request->get('name');
+        $branch->headquarters_id = $request->get('headquarters_id');
         $branch->save();
 
         return redirect('/branches')->with('success','Branch updated!');
