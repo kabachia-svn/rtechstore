@@ -16,7 +16,7 @@ class Order extends Model
     ];
     
     public function headquarters(){
-        return $this->hasOne('App\Headquarters');
+        return $this->belongsTo('App\Headquarters');
     }
     
     public function setEntryDateAttribute($input){

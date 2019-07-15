@@ -19,7 +19,5 @@ class Headquarters extends Model
     }
     public function orders(){
         return $this->hasOne('App\Order');
-    }
-
-    
+    } 
 }
