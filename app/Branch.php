@@ -14,4 +14,10 @@ class Branch extends Model
         'name',
         'headquarters_id',
     ];
+
+    public function headquarters(){
+        return $this->belongsTo('App\Headquarters');
+    }
+
+    
 }
