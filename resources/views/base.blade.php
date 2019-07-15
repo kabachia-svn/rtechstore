@@ -11,6 +11,7 @@
             <li><a href="{{ route('headquarters.index') }}">Headquarters</a></li>
             <li><a href="{{ route('branches.index') }}">Branches</a></li>
             <li><a href="{{ route('orders.index') }}">Orders</a></li>
+            <li><a href="{{ route('suppliers.index') }}">Suppliers</a></li>
         </ul>
     </div>
     <div class="container">
