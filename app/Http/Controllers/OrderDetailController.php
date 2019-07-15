@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\OrderDetail;
 
-use App\Product;
-use App\Order;
-use App\Supplier;
-
-class ProductController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index',compact('products'));
+        $order_details = OrderDetail::all();
+        return view('order_details.index',compact('order_details'));
     }
 
     /**
@@ -29,8 +26,7 @@ class ProductController extends Controller
     public function create()
     {
         $orders = Order::all();
-        $suppliers = Supplier::all();
-        return view('products.create',compact('orders','suppliers'));
+        return view('order_details.create',compact('orders'));
     }
 
     /**
@@ -42,22 +38,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'order_detail_id'=>'required',
             'product_id'=>'required',
-            'name'=>'required',
-            'supplier_id'=>'required',
+            'product_quantity'=>'required|numeric',
             'order_id'=>'required',
         ]);
 
-        $product = new Product([
+        $order_detail = new OrderDetail([
+            'order_detail_id'=>$request->get('order_detail_id'),
             'product_id'=>$request->get('product_id'),
-            'name'=>$request->get('name'),
-            'supplier_id'=>$request->get('supplier_id'),
+            'product_quantity'=>$request->get('product_quantity'),
             'order_id'=>$request->get('order_id'),
         ]);
 
 
-        $product->save();
-        return redirect('/products')->with('success', 'Product saved!');
+        $order_detail->save();
+        return redirect('/order_details')->with('success', 'Order Detail saved!');
     }
 
     /**
@@ -79,10 +75,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::where('product_id',$id)->first();
-        $suppliers = Supplier::all();
+        $order_detail = OrderDetail::where('order_detail_id',$id)->first();
         $orders = Order::all();
-        return view('products.edit', compact('product','suppliers','orders'));
+        return view('order_details.edit', compact('order_detail','orders'));
     }
 
     /**
@@ -99,17 +94,18 @@ class ProductController extends Controller
             'name'=>'required',
             'supplier_id'=>'required',
             'order_id'=>'required',
+            'product_quantity'=>'required|numeric',
         ]);
 
 
-        $product = Product::where('product_id',$id)->first();
-        $product->product_id = $request->get('product_id');
-        $product->name = $request->get('name');
-        $product->supplier_id = $request->get('supplier_id');
-        $product->order_id = $request->get('order_id');
-        $product->save();
+        $order_detail = OrderDetail::where('order_detail_id',$id)->first();
+        $order_detail->order_detail_id = $request->get('order_detail_id');
+        $order_detail->product_id = $request->get('product_id');
+        $order_detail->product_quantity = $request->get('product_quantity');
+        $order_detail->order_id = $request->get('order_id');
+        $order_detail->save();
 
-        return redirect('/products')->with('success','Product updated!');
+        return redirect('/order_details')->with('success','Order Detail updated!');
     }
 
     /**
@@ -120,23 +116,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::where('product_id',$id)->first();
-        $product->delete();
+        $order_detail = OrderDetail::where('order_detail_id',$id)->first();
+        $order_detail->delete();
 
-        return redirect('/products')->with('success','Product deleted!');
-    }
-
-   
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-        $search = $request->get('term');
-        $result = Product::where('product_id', 'LIKE','%'.$search.'%')->get();
-        return response->json($result);
+        return redirect('/order_details')->with('success','Order Detail deleted!');
     }
 }

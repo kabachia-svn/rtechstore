@@ -20,3 +20,6 @@ Route::resource('headquarters','HeadquartersController');
 Route::resource('orders','OrderController');
 Route::resource('suppliers','SupplierController');
 Route::resource('products','ProductController');
+Route::resource('deliveries','DeliveryController');
+Route::resource('orderdetails','OrderDetailController');
+Route::get('autocomplete_products','ProductController@search');
