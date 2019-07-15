@@ -69,7 +69,7 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $supplier = Headquarters::where('supplier_id',$id)->first();
+        $supplier = Supplier::where('supplier_id',$id)->first();
         return view('suppliers.edit', compact('supplier'));
     }
 
@@ -93,7 +93,7 @@ class SupplierController extends Controller
         $supplier->name = $request->get('name');
         $supplier->save();
 
-        return redirect('/suppliers')->with('success','Supplier updated!')
+        return redirect('/suppliers')->with('success','Supplier updated!');
     }
 
     /**
