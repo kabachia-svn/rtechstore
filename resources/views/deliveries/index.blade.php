@@ -20,6 +20,7 @@
                      <td>Delivery ID</td>
                      <td>Date</td>
                      <td>Supplier ID</td>
+                     <td>Order Detail ID</td>
                      <td colspan= 3>Actions</td>
                    </tr>
                 </thead>
@@ -28,12 +29,12 @@
                     <tr>
                         <td>{{ $delivery->delivery_id }}</td>
                         <td>{{ $delivery->delivery_date }}</td>
-                        <td>{{ $deliver->supplier_id }}</td>
+                        <td>{{ $delivery->supplier_id }}</td>
                         <td>
-                            <a href="{{ route('deliveries.edit',$delivery->delivery_id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('orderdetails.edit',$delivery->order_detail_id)}}" class="btn">{{ $delivery->order_detail_id }}</a>
                         </td>
                         <td>
-                            <a href="{{ route('order_detail_deliveries.edit',$delivery->delivery_id)}}" class="btn btn-primary">Order Detail</a>
+                            <a href="{{ route('deliveries.edit',$delivery->delivery_id)}}" class="btn btn-primary">Edit</a>
                         </td>
 
                         <td>

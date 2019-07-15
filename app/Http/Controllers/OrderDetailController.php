@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OrderDetail;
+use App\Order;
 
 class OrderDetailController extends Controller
 {
@@ -15,7 +16,7 @@ class OrderDetailController extends Controller
     public function index()
     {
         $order_details = OrderDetail::all();
-        return view('order_details.index',compact('order_details'));
+        return view('orderdetails.index',compact('order_details'));
     }
 
     /**
@@ -26,7 +27,7 @@ class OrderDetailController extends Controller
     public function create()
     {
         $orders = Order::all();
-        return view('order_details.create',compact('orders'));
+        return view('orderdetails.create',compact('orders'));
     }
 
     /**
@@ -53,7 +54,7 @@ class OrderDetailController extends Controller
 
 
         $order_detail->save();
-        return redirect('/order_details')->with('success', 'Order Detail saved!');
+        return redirect('/orderdetails')->with('success', 'Order Detail saved!');
     }
 
     /**
@@ -77,7 +78,7 @@ class OrderDetailController extends Controller
     {
         $order_detail = OrderDetail::where('order_detail_id',$id)->first();
         $orders = Order::all();
-        return view('order_details.edit', compact('order_detail','orders'));
+        return view('orderdetails.edit', compact('order_detail','orders'));
     }
 
     /**
@@ -90,11 +91,10 @@ class OrderDetailController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'order_detail_id'=>'required',
             'product_id'=>'required',
-            'name'=>'required',
-            'supplier_id'=>'required',
-            'order_id'=>'required',
             'product_quantity'=>'required|numeric',
+            'order_id'=>'required',
         ]);
 
 
@@ -105,7 +105,7 @@ class OrderDetailController extends Controller
         $order_detail->order_id = $request->get('order_id');
         $order_detail->save();
 
-        return redirect('/order_details')->with('success','Order Detail updated!');
+        return redirect('/orderdetails')->with('success','Order Detail updated!');
     }
 
     /**
@@ -119,6 +119,6 @@ class OrderDetailController extends Controller
         $order_detail = OrderDetail::where('order_detail_id',$id)->first();
         $order_detail->delete();
 
-        return redirect('/order_details')->with('success','Order Detail deleted!');
+        return redirect('/orderdetails')->with('success','Order Detail deleted!');
     }
 }

@@ -12,7 +12,7 @@
         <div class="col-sm-12">
             <h1>Order Detail</h1>
             <div>
-                <a style="margin: 19px" href="{{ route('order_details.create')}}" class="btn btn-primary">New Order Details</a>
+                <a style="margin: 19px" href="{{ route('orderdetails.create')}}" class="btn btn-primary">New Order Details</a>
             </div>
             <table class="table table-stripped">
                 <thead>
@@ -32,10 +32,10 @@
                         <td>{{ $order_detail->order_id }}</td>
                         <td>{{ $order_detail->product_quantity }}</td>
                         <td>
-                            <a href="{{ route('order_details.edit',$order_details->order_detail_id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('orderdetails.edit',$order_detail->order_detail_id)}}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('order_details.destroy', $order_details->order_detail_id)}}" method="post">
+                            <form action="{{ route('orderdetails.destroy', $order_detail->order_detail_id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>

@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{ route('order_details.update', $order_detail->order_detail_id)}}">
+        <form method="post" action="{{ route('orderdetails.update', $order_detail->order_detail_id)}}">
             @method('PATCH')
             @csrf
             <div class="form-group">

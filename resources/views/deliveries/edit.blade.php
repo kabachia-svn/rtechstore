@@ -40,6 +40,16 @@
                         @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label for="order_detail_id">Order Detail:</label>
+                    <select class="form-control" name="order_detail_id">
+                        <option></option>
+                        @foreach($order_details as $order_detail)
+                            <option value="{{ $order_detail->order_detail_id}}">{{ $order_detail->order_detail_id}}</option>
+                        @endforeach
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

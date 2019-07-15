@@ -13,6 +13,7 @@ class Delivery extends Model
         'delivery_id',
         'delivery_date',
         'supplier_id',
+        'order_detail_id',
     ];
 
     public function supplier(){

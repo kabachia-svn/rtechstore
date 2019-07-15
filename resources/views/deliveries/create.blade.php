@@ -39,7 +39,16 @@
                             <option value="{{ $supplier->supplier_id}}">{{ $supplier->name}}</option>
                         @endforeach
                      </select>
+                 </div>
+                 <div class="form-group">
+                     <label for="name">Order Detail:</label>
+                     <select class="form-control" name="order_detail_id">
+                        @foreach($order_details as $order_detail)
+                            <option value="{{ $order_detail->order_detail_id}}">{{ $order_detail->order_detail_id}}</option>
+                        @endforeach
+                     </select>
                   </div>
+
                  <button type='submit' class='btn btn-primary-outline'>Add delivery</button>
              </form>
         </div>

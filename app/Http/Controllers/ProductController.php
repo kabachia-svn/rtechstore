@@ -137,6 +137,6 @@ class ProductController extends Controller
     {
         $search = $request->get('term');
         $result = Product::where('product_id', 'LIKE','%'.$search.'%')->get();
-        return response->json($result);
+        return response()->json($result);
     }
 }
