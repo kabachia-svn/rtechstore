@@ -19,3 +19,4 @@ Route::resource('branches','BranchController');
 Route::resource('headquarters','HeadquartersController');
 Route::resource('orders','OrderController');
 Route::resource('suppliers','SupplierController');
+Route::resource('products','ProductController');
