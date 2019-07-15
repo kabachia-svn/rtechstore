@@ -22,7 +22,7 @@ class CreateDeliveriesTable extends Migration
 
         Schema::table('deliveries', function (Blueprint $table) {
             $table->foreign('supplier_id')->references('supplier_id')->on('suppliers');
-            $table->foreign('order_detail_id')->references('order_detail_id')->on('orderdetails');
+            $table->foreign('order_detail_id')->references('order_detail_id')->on('order_details');
         });
     }
 
