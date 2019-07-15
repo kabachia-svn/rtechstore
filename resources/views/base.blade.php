@@ -13,6 +13,9 @@
             <li><a href="{{ route('orders.index') }}">Orders</a></li>
             <li><a href="{{ route('suppliers.index') }}">Suppliers</a></li>
             <li><a href="{{ route('products.index') }}">Products</a></li>
+            <li><a href="{{ route('deliveries.index') }}">Deliveries</a></li>
+            <li><a href="{{ route('order_detail_deliveries.index') }}">Delivery Details</a></li>
+            <li><a href="{{ route('order_details.index') }}">Order Details</a></li>
         </ul>
     </div>
     <div class="container">
