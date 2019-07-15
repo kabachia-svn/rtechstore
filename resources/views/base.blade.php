@@ -8,9 +8,9 @@
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
         <ul class="nav navbar-nav">
+            <li><a href="{{ route('headquarters.index') }}">Headquarters</a></li>
             <li><a href="{{ route('branches.index') }}">Branches</a></li>
-            <li><a href="{{ route('branches.index') }}">Headquarters</a></li>
-            <li><a href="{{ route('branches.index') }}">Orders</a></li>
+            <li><a href="{{ route('orders.index') }}">Orders</a></li>
         </ul>
     </div>
     <div class="container">

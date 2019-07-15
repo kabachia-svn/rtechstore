@@ -17,5 +17,9 @@ class Headquarters extends Model
     public function branches(){
         return $this->hasMany('App\Branch');
     }
+    public function orders(){
+        return $this->hasOne('App\Order');
+    }
+
     
 }
