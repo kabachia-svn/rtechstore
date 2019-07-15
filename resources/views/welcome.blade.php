@@ -85,13 +85,12 @@
                 </div>
 
                 <div class="links">
+                    <a href="{{ route('headquarters.index') }}">HeadQuarters</a>
                     <a href="{{ route('branches.index') }}">Branches</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('products.index') }}">Products</a>
+                    <a href="{{ route('deliveries.index') }}">Deliveries</a>
+                    <a href="{{ route('branches.index') }}">Orders</a>
+                    <a href="https://github.com/kabachia-svn">GitHub</a>
                 </div>
             </div>
         </div>
