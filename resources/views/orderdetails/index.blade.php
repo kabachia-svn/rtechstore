@@ -21,6 +21,7 @@
                      <td>Product ID</td>
                      <td>Order ID</td>
                      <td>Quantity</td>
+                     <td>Delivery ID</td>
                      <td colspan= 2>Actions</td>
                    </tr>
                 </thead>
@@ -28,9 +29,15 @@
                     @foreach ($order_details as $order_detail)
                     <tr>
                         <td>{{ $order_detail->order_detail_id }}</td>
-                        <td>{{ $order_detail->product_id }}</td>
-                        <td>{{ $order_detail->order_id }}</td>
+                        <td><a href="{{ route('products.edit',$order_detail->product_id)}}">{{ $order_detail->product_id }}</a></td>
+                        <td><a href="{{ route('orders.edit',$order_detail->order_id)}}">{{ $order_detail->order_id }}</a></td>
                         <td>{{ $order_detail->product_quantity }}</td>
+                        <td>
+                            @if(!empty($order_detail->delivery_id))
+                                <a href="{{ route('deliveries.edit',$order_detail->delivery_id)}}">{{ $order_detail->delivery_id }}</a>
+                            @endif
+                        </td>
+                        <td></td>
                         <td>
                             <a href="{{ route('orderdetails.edit',$order_detail->order_detail_id)}}" class="btn btn-primary">Edit</a>
                         </td>

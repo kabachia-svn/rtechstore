@@ -14,9 +14,13 @@ class OrderDetail extends Model
         'product_id',
         'order_id',
         'product_quantity',
+        'delivery_id',
     ];
 
     public function order(){
         return $this->belongsTo('App\Order');
+    }
+    public function delivery(){
+        return $this->hasOne('App\Delivery');
     }
 }

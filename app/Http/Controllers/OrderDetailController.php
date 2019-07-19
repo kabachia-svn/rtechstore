@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\OrderDetail;
 use App\Order;
+use App\Delivery;
+use App\Product;
 
 class OrderDetailController extends Controller
 {
@@ -27,7 +29,9 @@ class OrderDetailController extends Controller
     public function create()
     {
         $orders = Order::all();
-        return view('orderdetails.create',compact('orders'));
+        $products = Product::all();
+        $deliveries = Delivery::all();
+        return view('orderdetails.create',compact('orders','products','deliveries'));
     }
 
     /**
@@ -50,6 +54,7 @@ class OrderDetailController extends Controller
             'product_id'=>$request->get('product_id'),
             'product_quantity'=>$request->get('product_quantity'),
             'order_id'=>$request->get('order_id'),
+            'delivery_id'=>$request->get('delivery_id'),
         ]);
 
 
@@ -78,7 +83,9 @@ class OrderDetailController extends Controller
     {
         $order_detail = OrderDetail::where('order_detail_id',$id)->first();
         $orders = Order::all();
-        return view('orderdetails.edit', compact('order_detail','orders'));
+        $products = Product::all();
+        $deliveries = Delivery::all();
+        return view('orderdetails.edit', compact('order_detail','orders','products','deliveries'));
     }
 
     /**
@@ -103,6 +110,7 @@ class OrderDetailController extends Controller
         $order_detail->product_id = $request->get('product_id');
         $order_detail->product_quantity = $request->get('product_quantity');
         $order_detail->order_id = $request->get('order_id');
+        $order_detail->delivery_id = $request->get('delivery_id');
         $order_detail->save();
 
         return redirect('/orderdetails')->with('success','Order Detail updated!');

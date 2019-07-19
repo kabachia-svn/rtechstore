@@ -28,9 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $orders = Order::all();
         $suppliers = Supplier::all();
-        return view('products.create',compact('orders','suppliers'));
+        return view('products.create',compact('suppliers'));
     }
 
     /**
@@ -45,14 +44,12 @@ class ProductController extends Controller
             'product_id'=>'required',
             'name'=>'required',
             'supplier_id'=>'required',
-            'order_id'=>'required',
         ]);
 
         $product = new Product([
             'product_id'=>$request->get('product_id'),
             'name'=>$request->get('name'),
             'supplier_id'=>$request->get('supplier_id'),
-            'order_id'=>$request->get('order_id'),
         ]);
 
 
@@ -81,8 +78,7 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id',$id)->first();
         $suppliers = Supplier::all();
-        $orders = Order::all();
-        return view('products.edit', compact('product','suppliers','orders'));
+        return view('products.edit', compact('product','suppliers'));
     }
 
     /**
@@ -98,7 +94,6 @@ class ProductController extends Controller
             'product_id'=>'required',
             'name'=>'required',
             'supplier_id'=>'required',
-            'order_id'=>'required',
         ]);
 
 
@@ -106,7 +101,6 @@ class ProductController extends Controller
         $product->product_id = $request->get('product_id');
         $product->name = $request->get('name');
         $product->supplier_id = $request->get('supplier_id');
-        $product->order_id = $request->get('order_id');
         $product->save();
 
         return redirect('/products')->with('success','Product updated!');

@@ -13,13 +13,9 @@ class Product extends Model
         'product_id',
         'name',
         'supplier_id',
-        'order_id',
     ];
 
     public function supplier(){
         return $this->belongsTo('App\Supplier');
-    }
-    public function order(){
-        return $this->hasOne('App\Order');
     }
 }

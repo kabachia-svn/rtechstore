@@ -18,10 +18,12 @@ class CreateOrderDetailsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('order_id');
             $table->integer('product_quantity');
+            $table->unsignedBigInteger('delivery_id')->nullable();
         });
 
         Schema::table('order_details', function (Blueprint $table) {
             $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->foreign('delivery_id')->references('delivery_id')->on('deliveries');
         });
 
     }

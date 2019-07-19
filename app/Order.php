@@ -18,6 +18,9 @@ class Order extends Model
     public function headquarters(){
         return $this->belongsTo('App\Headquarters');
     }
+    public function orderDetails(){
+       return $this->hasMany('App\OrderDetail');
+    }
     
     public function setEntryDateAttribute($input){
      $this->attributes['order_date']= Carbon::createFromFormat("yyyy-mm-dd", $input)->format('Y-m-d');

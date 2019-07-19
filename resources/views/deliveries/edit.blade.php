@@ -34,22 +34,12 @@
             <div class="form-group">
                 <label for="supplier_id">Supplier:</label>
                     <select class="form-control" name="supplier_id">
-                        <option></option>
+                       <option value="{{ $delivery->supplier_id}}">{{ $delivery->supplier_id}}</option>
                         @foreach($suppliers as $supplier)
                             <option value="{{ $supplier->supplier_id}}">{{ $supplier->name}}</option>
                         @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="order_detail_id">Order Detail:</label>
-                    <select class="form-control" name="order_detail_id">
-                        <option></option>
-                        @foreach($order_details as $order_detail)
-                            <option value="{{ $order_detail->order_detail_id}}">{{ $order_detail->order_detail_id}}</option>
-                        @endforeach
-                </select>
-            </div>
-
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

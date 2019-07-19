@@ -17,12 +17,10 @@ class CreateDeliveriesTable extends Migration
             $table->bigIncrements('delivery_id');
             $table->timestamp('delivery_date');
             $table->unsignedBigInteger('supplier_id');
-            $table->unsignedBigInteger('order_detail_id');
         });
 
         Schema::table('deliveries', function (Blueprint $table) {
             $table->foreign('supplier_id')->references('supplier_id')->on('suppliers');
-            $table->foreign('order_detail_id')->references('order_detail_id')->on('order_details');
         });
     }
 

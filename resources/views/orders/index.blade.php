@@ -33,7 +33,7 @@
                             <a href="{{ route('orders.edit',$order->order_id)}}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <a href="{{ route('orders.edit',$order->order_id)}}" class="btn btn-primary">Add Details</a>
+                            <a href="{{ route('orderdetails.edit',$order->order_id)}}" class="btn btn-primary">Add Details</a>
                         </td>
 
                         <td>

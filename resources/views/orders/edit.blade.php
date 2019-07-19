@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label for="headquarters_id">Headquarters:</label>
                     <select class="form-control" name="headquarters_id">
-                        <option></option>
+                        <option value="{{ $order->headquarters_id}}">{{ $order->headquarters_id}}</option>
                         @foreach($headquarters as $headquarter)
                             <option value="{{ $headquarter->headquarters_id}}">{{ $headquarter->name}}</option>
                         @endforeach

@@ -32,15 +32,6 @@
                         @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="order_id">Order:</label>
-                    <select class="form-control" name="order_id">
-                        <option></option>
-                        @foreach($orders as $order)
-                            <option value="{{ $order->order_id}}">{{ $order->order_id}}</option>
-                        @endforeach
-                </select>
-            </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

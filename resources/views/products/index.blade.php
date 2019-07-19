@@ -20,7 +20,6 @@
                      <td>Product ID</td>
                      <td>Name</td>
                      <td>Supplier ID</td>
-                     <td>Order ID</td>
                      <td colspan= 2>Actions</td>
                    </tr>
                 </thead>
@@ -30,7 +29,6 @@
                         <td>{{ $product->product_id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->supplier_id }}</td>
-                        <td>{{ $product->order_id }}</td>
                         <td>
                             <a href="{{ route('products.edit',$product->product_id)}}" class="btn btn-primary">Edit</a>
                         </td>

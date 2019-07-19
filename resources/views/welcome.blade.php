@@ -89,7 +89,7 @@
                     <a href="{{ route('branches.index') }}">Branches</a>
                     <a href="{{ route('products.index') }}">Products</a>
                     <a href="{{ route('deliveries.index') }}">Deliveries</a>
-                    <a href="{{ route('branches.index') }}">Orders</a>
+                    <a href="{{ route('orders.index') }}">Orders</a>
                     <a href="https://github.com/kabachia-svn">GitHub</a>
                 </div>
             </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Delivery;
 use App\Supplier;
-use App\OrderDetail;
+use App\Order;
 
 class DeliveryController extends Controller
 {
@@ -28,8 +28,7 @@ class DeliveryController extends Controller
     public function create()
     {
         $suppliers = Supplier::all();
-        $order_details = OrderDetail::all();
-        return view('deliveries.create',compact('suppliers','order_details'));
+        return view('deliveries.create',compact('suppliers'));
     }
 
     /**
@@ -44,14 +43,12 @@ class DeliveryController extends Controller
             'delivery_id'=>'required',
             'delivery_date'=>'required',
             'supplier_id'=>'required',
-            'order_detail_id'=>'required',
         ]);
 
         $delivery = new Delivery([
             'delivery_id'=>$request->get('delivery_id'),
             'delivery_date'=>$request->get('delivery_date'),
             'supplier_id'=>$request->get('supplier_id'),
-            'order_detail_id'=>$request->get('order_detail_id'),
         ]);
 
         $delivery->save();
@@ -79,8 +76,7 @@ class DeliveryController extends Controller
     {
         $delivery = Delivery::where('delivery_id',$id)->first();
         $suppliers = Supplier::all();
-        $order_details = OrderDetail::all();
-        return view('deliveries.edit', compact('delivery','order_details','suppliers'));
+        return view('deliveries.edit', compact('delivery','suppliers'));
     }
 
     /**
@@ -96,7 +92,6 @@ class DeliveryController extends Controller
             'delivery_id'=>'required',
             'delivery_date'=>'required',
             'supplier_id'=>'required',
-            'order_detail_id'=>'required',
         ]);
 
 
@@ -104,7 +99,6 @@ class DeliveryController extends Controller
         $delivery->delivery_id = $request->get('delivery_id');
         $delivery->delivery_date = $request->get('delivery_date');
         $delivery->supplier_id = $request->get('supplier_id');
-        $delivery->order_detail_id = $request->get('order_detail_id');
         $delivery->save();
 
         return redirect('/deliveries')->with('success','Delivery updated!');
