@@ -30,14 +30,12 @@ class ProductController extends Controller
             'product_id'=>'required',
             'name'=>'required',
             'supplier_id'=>'required',
-            'order_id'=>'required',
         ]);
 
         $product = new Product([
             'product_id'=>$request->get('product_id'),
             'name'=>$request->get('name'),
             'supplier_id'=>$request->get('supplier_id'),
-            'order_id'=>$request->get('order_id'),
         ]);
    
         $product->save();
@@ -68,14 +66,12 @@ class ProductController extends Controller
             'product_id'=>'required',
             'name'=>'required',
             'supplier_id'=>'required',
-            'order_id'=>'required',
         ]);
 
         $product = Product::where('product_id',$id)->first();
         $product->product_id = $request->get('product_id');
         $product->name = $request->get('name');
         $product->supplier_id = $request->get('supplier_id');
-        $product->order_id = $request->get('order_id');
         $product->save();
 
         return response()->json($product,200);
